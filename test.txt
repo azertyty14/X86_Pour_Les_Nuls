@@ -6,7 +6,13 @@ lea edx, [eax+0x10]
 inc ebx
 dec edx
 add ebx, edx
-jmp @salut
+push 0x90
+pop edx
+call @salut
+mov eax, 0x0
+end
 
 @salut
 mov eax, 0xff
+mov ebx, 0x0f
+ret

@@ -7,6 +7,11 @@ from factory.sub_factory import SubFactory
 from factory.inc_factory import IncFactory
 from factory.dec_factory import DecFactory
 from factory.jmp_factory import JmpFactory
+from factory.pop_factory import PopFactory
+from factory.push_factory import PushFactory
+from factory.call_factory import CallFactory
+from factory.ret_factory import RetFactory
+from factory.end_factory import EndFactory
 from factory.nop_factory import NopFactory
 from instruction.repere import Repere
 
@@ -37,6 +42,16 @@ def get_instruction_list(filename : str):
             instruction_list.append(DecFactory.get_instruction(l))
         elif a[0] == "jmp":
             instruction_list.append(JmpFactory.get_instruction(l))
+        elif a[0] == "pop":
+            instruction_list.append(PopFactory.get_instruction(l))
+        elif a[0] == "push":
+            instruction_list.append(PushFactory.get_instruction(l))
+        elif a[0] == "call":
+            instruction_list.append(CallFactory.get_instruction(l))
+        elif a[0] == "ret":
+            instruction_list.append(RetFactory.get_instruction(l))
+        elif a[0] == "end":
+            instruction_list.append(EndFactory.get_instruction(l))
         elif len(a[0]) > 0 and a[0][0] == "@":
             instruction_list.append(Repere(a[0][1:], i))
         else:
