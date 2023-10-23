@@ -3,6 +3,7 @@ from instruction.i_operande import IOperande
 from instruction.const_operande import ConstOperande
 from instruction.simple_operande import SimpleOperande
 from instruction.memory_operande import MemoryOperande
+from instruction.repere_operande import RepereOperande
 
 
 class OperandeFactory(IOperandeFactory):
@@ -33,5 +34,7 @@ class OperandeFactory(IOperandeFactory):
             else:
                 b = a[1].split('*')
                 return MemoryOperande(a[0], b[0], int(b[1], base=16), int(a[2], base=16))     
+        elif val[0] == '@':
+            return RepereOperande(val[1:])
         else:
             return SimpleOperande(val)

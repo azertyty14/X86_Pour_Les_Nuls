@@ -6,3 +6,7 @@ lea edx, [eax+0x10]
 inc ebx
 dec edx
 add ebx, edx
+jmp @salut
+
+@salut
+mov eax, 0xff
