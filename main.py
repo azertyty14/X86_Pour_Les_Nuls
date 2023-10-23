@@ -3,9 +3,8 @@ from etat.etat_interne import EtatInterne
 
 def main():
     inst = my_parser.get_instruction_list("test.txt")
-    state = EtatInterne()
-    for i in inst:
-        i.execute_instruction(state)
+    state = EtatInterne(inst)
+    while state.execute_instruction():
         print(state.state)
     
 

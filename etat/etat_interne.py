@@ -1,8 +1,11 @@
+from instruction.repere import Repere
+
 class EtatInterne:
-    def __init__(self) -> None:
-        self.state = {"eax" : 0, "ebx" : 0, "ecx" : 0, "edx" : 0, "null": 0}
+    def __init__(self, instruction) -> None:
+        self.state = {"eax" : 0, "ebx" : 0, "ecx" : 0, "edx" : 0, "eip": 0, "null": 0}
         self.memoire = [0 for _ in range(10001)]
         self.state["esp"] = len(self.memoire) - 1
+        self.instruction = instruction
         
     def get_registre_value(self, nom : str) -> int:
         return self.state[nom]
@@ -15,3 +18,20 @@ class EtatInterne:
     
     def set_value_from_memory(self, adress : int, value : int):
         self.memoire[adress] = value
+    
+    def find_repere(self, nom) -> int:
+        for i in self.instruction:
+            if type(i) is Repere:
+                if i.nom == nom:
+                    return i.addr
+        print("Not found Error")
+    
+    def execute_instruction(self):
+        print(self.state["eip"])
+        if self.state["eip"] < len(self.instruction):
+            print(self.instruction[self.state["eip"]].affiche())
+            self.instruction[self.state["eip"]].execute_instruction(self)
+            self.state["eip"] += 1
+            return True
+        else:
+            return False
