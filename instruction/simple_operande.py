@@ -10,3 +10,6 @@ class SimpleOperande(IOperande):
     
     def set_value(self, etat : EtatInterne, valeur : int):
         etat.set_registre_value(self.nom, valeur)
+    
+    def get_address(self, etat: EtatInterne) -> int:
+        return etat.get_registre_value(self.nom)

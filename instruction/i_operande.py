@@ -6,3 +6,6 @@ class IOperande:
     
     def set_value(self, etat : EtatInterne, valeur : int):
         pass
+    
+    def get_address(self, etat: EtatInterne) -> int:
+        pass

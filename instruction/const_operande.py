@@ -10,3 +10,6 @@ class ConstOperande(IOperande):
     
     def set_value(self, etat : EtatInterne, valeur : int):
         print("Erreur dans ConstOperande on ne peut pas set la valeur")
+    
+    def get_address(self, etat: EtatInterne) -> int:
+        print("Erreur dans ConstOperande on ne peut pas récuperer d'adresse")
