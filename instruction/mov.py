@@ -8,5 +8,8 @@ class Mov(Instruction):
     
     def execute_instruction(self, etat):
         self.op_dest.set_value(etat, self.op_src.get_value(etat))
+    
+    def affiche(self) -> str:
+        return "mov"
         
     

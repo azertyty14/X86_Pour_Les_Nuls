@@ -2,10 +2,11 @@ from instruction.repere import Repere
 
 class EtatInterne:
     def __init__(self, instruction) -> None:
-        self.state = {"eax" : 0, "ebx" : 0, "ecx" : 0, "edx" : 0, "eip": 0, "null": 0}
+        self.state = {"eax" : 0, "ebx" : 0, "ecx" : 0, "edx" : 0, "eip": 0, "ebp" : 0, "esi" : 0, "null": 0}
         self.memoire = [0 for _ in range(10001)]
         self.state["esp"] = len(self.memoire) - 1
         self.instruction = instruction
+        self.flags = {"CF" : 0, "ZF": 0, "OF": 0, "SF": 0}
         
     def get_registre_value(self, nom : str) -> int:
         return self.state[nom]
@@ -18,6 +19,12 @@ class EtatInterne:
     
     def set_value_from_memory(self, adress : int, value : int):
         self.memoire[adress] = value
+
+    def get_flag_value(self, flag: str) -> int:
+        return self.flags[flag]
+    
+    def set_flag_value(self, flag: str, value: int):
+        self.flags[flag] = value
     
     def find_repere(self, nom) -> int:
         for i in self.instruction:
@@ -27,7 +34,7 @@ class EtatInterne:
         print("Not found Error")
     
     def execute_instruction(self):
-        print(self.state["eip"])
+        # print(self.state["eip"])
         if self.state["eip"] < len(self.instruction):
             print(self.instruction[self.state["eip"]].affiche())
             self.instruction[self.state["eip"]].execute_instruction(self)
@@ -35,3 +42,7 @@ class EtatInterne:
             return True
         else:
             return False
+    
+    def affiche(self):
+        print("state", self.state)
+        print("flags", self.flags)

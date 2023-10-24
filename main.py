@@ -2,10 +2,12 @@ import my_parser
 from etat.etat_interne import EtatInterne
 
 def main():
-    inst = my_parser.get_instruction_list("test.txt")
+    inst = my_parser.get_instruction_list("factoriel.txt")
     state = EtatInterne(inst)
-    while state.execute_instruction():
-        print(state.state)
+    j = 0
+    while state.execute_instruction() and j < 1000:
+        state.affiche()
+        j += 1
     
 
 

@@ -11,8 +11,12 @@ from factory.pop_factory import PopFactory
 from factory.push_factory import PushFactory
 from factory.call_factory import CallFactory
 from factory.ret_factory import RetFactory
+from factory.cmp_factory import CmpFactory
+from factory.jbe_factory import JbeFactory
+from factory.jge_factory import JgeFactory
 from factory.end_factory import EndFactory
 from factory.nop_factory import NopFactory
+from factory.special_factory import SpecialFactory
 from instruction.repere import Repere
 
 def get_lines(filename: str):
@@ -50,12 +54,21 @@ def get_instruction_list(filename : str):
             instruction_list.append(CallFactory.get_instruction(l))
         elif a[0] == "ret":
             instruction_list.append(RetFactory.get_instruction(l))
+        elif a[0] == "cmp":
+            instruction_list.append(CmpFactory.get_instruction(l))
+        elif a[0] == "jbe":
+            instruction_list.append(JbeFactory.get_instruction(l))
+        elif a[0] == "jge":
+            instruction_list.append(JgeFactory.get_instruction(l))
+        elif a[0] == "special":
+            instruction_list.append(SpecialFactory.get_instruction(l))
         elif a[0] == "end":
             instruction_list.append(EndFactory.get_instruction(l))
         elif len(a[0]) > 0 and a[0][0] == "@":
             instruction_list.append(Repere(a[0][1:], i))
         else:
-            print("instruction inconnu")
+            if len(a[0]) != 0:
+                print("instruction inconnu")
             instruction_list.append(NopFactory.get_instruction(l))
         i += 1
     return instruction_list
