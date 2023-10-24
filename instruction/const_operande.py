@@ -13,3 +13,6 @@ class ConstOperande(IOperande):
     
     def get_address(self, etat: EtatInterne) -> int:
         print("Erreur dans ConstOperande on ne peut pas récuperer d'adresse")
+    
+    def affiche(self) -> str:
+        return hex(self.value)

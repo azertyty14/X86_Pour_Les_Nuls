@@ -11,4 +11,4 @@ class Pop(Instruction):
         etat.set_registre_value("esp", etat.get_registre_value("esp") + 4)
 
     def affiche(self) -> str:
-        return "pop"
+        return "pop " + self.op.affiche()

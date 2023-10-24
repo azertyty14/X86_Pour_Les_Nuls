@@ -9,3 +9,6 @@ class IOperande:
     
     def get_address(self, etat: EtatInterne) -> int:
         pass
+
+    def affiche(self) -> str:
+        pass

@@ -13,3 +13,6 @@ class RepereOperande(IOperande):
     
     def get_address(self, etat: EtatInterne) -> int:
         print("Erreur dans RepereOperande on ne peut pas récuperer d'adresse")
+    
+    def affiche(self) -> str:
+        return "@" + self.nom

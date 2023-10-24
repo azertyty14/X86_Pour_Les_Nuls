@@ -11,6 +11,6 @@ class Push(Instruction):
         etat.set_value_from_memory(etat.get_registre_value("esp"), self.op.get_value(etat))
     
     def affiche(self) -> str:
-        return "push "
+        return "push " + self.op.affiche()
             
     

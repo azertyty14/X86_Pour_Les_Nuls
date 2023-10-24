@@ -13,3 +13,6 @@ class SimpleOperande(IOperande):
     
     def get_address(self, etat: EtatInterne) -> int:
         return etat.get_registre_value(self.nom)
+    
+    def affiche(self) -> str:
+        return self.nom

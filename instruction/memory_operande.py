@@ -16,3 +16,6 @@ class MemoryOperande(IOperande):
     
     def set_value(self, etat: EtatInterne, valeur: int):
         etat.set_value_from_memory(self.get_address(etat), valeur)
+    
+    def affiche(self) -> str:
+        return "[" + self.reg1 + "+" + self.reg2 + "*" + hex(self.scale) + "+" + hex(self.offset) + "]"

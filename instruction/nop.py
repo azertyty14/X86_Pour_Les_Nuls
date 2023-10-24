@@ -8,5 +8,8 @@ class Nop(Instruction):
     
     def execute_instruction(self, etat : EtatInterne):
         pass
+    
+    def affiche(self) -> str:
+        return "nop"
         
     

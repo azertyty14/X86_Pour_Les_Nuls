@@ -11,6 +11,6 @@ class Special(Instruction):
         self.custom.execute_instruction(etat)
     
     def affiche(self) -> str:
-        return "special"
+        return self.custom.affiche()
         
     

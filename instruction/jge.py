@@ -13,6 +13,6 @@ class Jge(Instruction):
             etat.set_registre_value("eip", self.op.get_value(etat) - 1)
     
     def affiche(self) -> str:
-        return "jge "
+        return "jge " + self.op.affiche()
         
     
