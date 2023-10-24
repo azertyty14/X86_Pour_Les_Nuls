@@ -1,0 +1,25 @@
+push 0x5
+call @factorielle
+@print
+push eax
+push 0x0
+special printf
+end
+
+@factorielle
+push ebp
+mov ebp, esp
+mov eax, 0x0
+push esi
+mov esi, [ebp+0x8]
+inc eax
+cmp esi, eax
+jbe @end
+lea eax, [esi+-0x1]
+push eax
+call @factorielle
+mul esi
+@end
+pop esi
+pop ebp
+ret 0x4

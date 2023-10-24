@@ -10,9 +10,21 @@ push 0x90
 pop edx
 call @salut
 mov eax, 0x0
+mov ebx, 0x1
+cmp eax, ebx
+mov [0x10], 0x30
+mov [0x11], 0x31
+push 0x10
+push 0x2
+special printf
+jbe @fin
 end
 
 @salut
 mov eax, 0xff
 mov ebx, 0x0f
 ret
+
+@fin
+mov eax, 0ff
+end

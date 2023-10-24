@@ -10,6 +10,6 @@ class Mul(Instruction):
         self.op = op
     
     def execute_instruction(self, etat : EtatInterne):
-        etat.set_registre_value("aex", etat.get_registre_value("aex")*self.op.get_value())
+        etat.set_registre_value("eax", etat.get_registre_value("eax")*self.op.get_value(etat))
         
     

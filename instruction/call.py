@@ -7,8 +7,8 @@ class Call(Instruction):
         self.op = op
     
     def execute_instruction(self, etat : EtatInterne):
-        etat.set_value_from_memory(etat.get_registre_value("esp"), etat.get_registre_value("eip") + 1)
         etat.set_registre_value("esp", etat.get_registre_value("esp") - 4)
+        etat.set_value_from_memory(etat.get_registre_value("esp"), etat.get_registre_value("eip") + 1)
         etat.set_registre_value("eip", self.op.get_value(etat) - 1)
     
     def affiche(self) -> str:

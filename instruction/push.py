@@ -7,8 +7,8 @@ class Push(Instruction):
         self.op = op
     
     def execute_instruction(self, etat : EtatInterne):
-        etat.set_value_from_memory(etat.get_registre_value("esp"), self.op.get_value(etat))
         etat.set_registre_value("esp", etat.get_registre_value("esp") - 4)
+        etat.set_value_from_memory(etat.get_registre_value("esp"), self.op.get_value(etat))
     
     def affiche(self) -> str:
         return "push "
