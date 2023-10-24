@@ -10,6 +10,6 @@ class Mov(Instruction):
         self.op_dest.set_value(etat, self.op_src.get_value(etat))
     
     def affiche(self) -> str:
-        return "mov"
+        return "mov " + self.op_dest.affiche() + ", " + self.op_src.affiche()
         
     

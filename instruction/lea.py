@@ -8,5 +8,8 @@ class Lea(Instruction):
     
     def execute_instruction(self, etat):
         self.op_dest.set_value(etat, self.op_src.get_address(etat))
+    
+    def affiche(self) -> str:
+        return "lea " + self.op_dest.affiche() + ", " + self.op_src.affiche()
         
     

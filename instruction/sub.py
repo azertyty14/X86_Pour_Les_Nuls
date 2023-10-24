@@ -11,4 +11,6 @@ class Sub(Instruction):
     def execute_instruction(self, etat):
         self.op_dest.set_value(etat, self.op_dest.get_value(etat) - self.op_src.get_value(etat))
         
+    def affiche(self) -> str:
+        return "sub " + self.op_dest.affiche() + "," + self.op_src.affiche()
     

@@ -11,5 +11,8 @@ class Mul(Instruction):
     
     def execute_instruction(self, etat : EtatInterne):
         etat.set_registre_value("eax", etat.get_registre_value("eax")*self.op.get_value(etat))
+    
+    def affiche(self) -> str:
+        return "mul " + self.op.affiche()
         
     

@@ -10,6 +10,6 @@ class Jmp(Instruction):
         etat.set_registre_value("eip", self.op.get_value(etat) - 1)
     
     def affiche(self) -> str:
-        return "jmp "
+        return "jmp " + self.op.affiche()
         
     

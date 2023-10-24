@@ -26,5 +26,8 @@ class PrintfInstruction(CustomInstruction):
         else:
             print("Erreur dans printf")
         print("========== END PRINTF ==========")
+    
+    def affiche(self) -> str:
+        return "printf"
         
     

@@ -9,5 +9,8 @@ class Inc(Instruction):
     
     def execute_instruction(self, etat):
         self.op_dest.set_value(etat, self.op_dest.get_value(etat) + 1)
+    
+    def affiche(self) -> str:
+        return "inc " + self.op_dest.affiche()
         
     

@@ -22,6 +22,9 @@ class Cmp(Instruction):
             etat.set_flag_value("ZF", 1)
         else:
             etat.set_flag_value("CF", 0)
+        
+    def affiche(self) -> str:
+        return "cmp " + self.op_1.affiche() + ", " + self.op_2.affiche()
             
             
         

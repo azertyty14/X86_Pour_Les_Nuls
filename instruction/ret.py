@@ -13,4 +13,4 @@ class Ret(Instruction):
         etat.set_registre_value("eip", tmp - 1)
 
     def affiche(self) -> str:
-        return "ret "
+        return "ret " + self.op.affiche()
