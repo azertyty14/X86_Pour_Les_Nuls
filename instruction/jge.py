@@ -9,7 +9,7 @@ class Jge(Instruction):
         self.op = op
     
     def execute_instruction(self, etat : EtatInterne):
-        if etat.get_flag_value("SF") == 1:
+        if etat.get_flag_value("SF") == 0:
             etat.set_registre_value("eip", self.op.get_value(etat) - 1)
     
     def affiche(self) -> str:

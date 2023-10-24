@@ -2,7 +2,7 @@ from instruction.repere import Repere
 
 class EtatInterne:
     def __init__(self, instruction) -> None:
-        self.state = {"eax" : 0, "ebx" : 0, "ecx" : 0, "edx" : 0, "eip": 0, "ebp" : 0, "esi" : 0, "null": 0}
+        self.state = {"eax" : 0, "ebx" : 0, "ecx" : 0, "edx" : 0, "eip": 0, "ebp" : 0, "esi" : 0, "edi": 0, "null": 0}
         self.memoire = [0 for _ in range(10001)]
         self.state["esp"] = len(self.memoire) - 1
         self.instruction = instruction
@@ -34,7 +34,6 @@ class EtatInterne:
         print("Not found Error")
     
     def execute_instruction(self):
-        # print(self.state["eip"])
         if self.state["eip"] < len(self.instruction):
             print(self.instruction[self.state["eip"]].affiche())
             self.instruction[self.state["eip"]].execute_instruction(self)
@@ -43,6 +42,27 @@ class EtatInterne:
         else:
             return False
     
+    def print_stack(self):
+        s = []
+        i = 9996
+        while i >= self.state["esp"]:
+            s.append(self.memoire[i])
+            i -= 4
+        print("stack",s)
+    
     def affiche(self):
         print("state", self.state)
         print("flags", self.flags)
+        self.print_stack()
+    
+    def execute_all(self, interactif = False):
+        i = 0
+        b = True
+        while b:
+            print("tour numero: " + str(i))
+            b = self.execute_instruction()
+            i += 1
+            self.affiche()
+            print("-----------------------------------------------")
+            if interactif:
+                input()
